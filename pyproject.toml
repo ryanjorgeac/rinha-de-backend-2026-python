@@ -1,0 +1,10 @@
+[project]
+name = "rinha-de-backend-2026-python"
+version = "0.1.0"
+description = "My Python submission for 2026 challenge"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi[standard]>=0.136.1",
+    "pydantic>=2.13.4",
+]
