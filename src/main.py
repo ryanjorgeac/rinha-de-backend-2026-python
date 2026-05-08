@@ -5,12 +5,11 @@ from src.handler import handle_fraud_score
 
 app = FastAPI()
 
-@app.get("/ready")
+@app.get("/ready", status_code=status.HTTP_200_OK)
 async def healthcheck():
-    return Response(status_code=status.HTTP_200_OK)
+    return Response()
 
-@app.post("/fraud-score")
+@app.post("/fraud-score", status_code=status.HTTP_200_OK)
 async def detect_fraud(payload: FraudScorePayload):
-    is_approved, score = await handle_fraud_score(payload)
-    content = {"approved": is_approved, "fraud_score": score}
-    return Response(status_code=status.HTTP_200_OK, content=content)
+    is_approved, score = handle_fraud_score(payload)
+    return {"approved": is_approved, "fraud_score": score}

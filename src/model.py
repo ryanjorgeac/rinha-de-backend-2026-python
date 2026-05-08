@@ -9,9 +9,9 @@ class Transaction(BaseModel):
     @model_validator(mode='before')
     def validate_requested_at(cls, values):
         try:
-            datetime.strptime(values['requested_at'], '%Y-%m-%dT%H:%M:%S')
+            datetime.strptime(values['requested_at'], '%Y-%m-%dT%H:%M:%SZ')
         except ValueError:
-            raise ValueError("requested_at must be in the format 'YYYY-MM-DDTHH:MM:SS'")
+            raise ValueError("requested_at must be in the format 'YYYY-MM-DDTHH:MM:SSZ'")
         return values
 
 
@@ -40,9 +40,9 @@ class LastTransaction(BaseModel):
     @model_validator(mode='before')
     def validate_timestamp(cls, values):
         try:
-            datetime.strptime(values['timestamp'], '%Y-%m-%dT%H:%M:%S')
+            datetime.strptime(values['timestamp'], '%Y-%m-%dT%H:%M:%SZ')
         except ValueError:
-            raise ValueError("timestamp must be in the format 'YYYY-MM-DDTHH:MM:SS'")
+            raise ValueError("timestamp must be in the format 'YYYY-MM-DDTHH:MM:SSZ'")
         return values
 
 
